@@ -56,7 +56,7 @@ report 50004 "Posted Armada List"
                     filterDateFrom := 0D;
                 if FilterDateTo = 0D then
                     FilterDateTo := 0D;
-                // SetRange("Tanggal Transaksi", filterDateFrom, FilterDateTo);
+                SetRange("Tanggal Transaksi", filterDateFrom, FilterDateTo);
             end;
         }
     }
@@ -71,11 +71,11 @@ report 50004 "Posted Armada List"
                 {
                     field(FilterDateFrom; FilterDateFrom)
                     {
-
+                        ApplicationArea = all;
                     }
                     field(FilterDateTo; FilterDateTo)
                     {
-
+                        ApplicationArea = all;
                     }
                 }
             }
@@ -88,7 +88,6 @@ report 50004 "Posted Armada List"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
