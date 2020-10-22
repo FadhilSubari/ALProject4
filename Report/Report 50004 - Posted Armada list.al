@@ -52,11 +52,21 @@ report 50004 "Posted Armada List"
             }
             trigger OnPreDataItem()
             begin
-                if filterDateFrom = 0D then
+                if (filterDateFrom = 0D) AND (FilterDateTo = 0D) then begin
                     filterDateFrom := 0D;
-                if FilterDateTo = 0D then
-                    FilterDateTo := 0D;
+                    filterDateTo := 0D;
+                    Message('Maaf Data yang ingin di Report Tidak Ada');
+                end;
                 SetRange("Tanggal Transaksi", filterDateFrom, FilterDateTo);
+            end;
+
+            trigger OnAfterGetRecord()
+            var
+                GetTanggal: Record "Posted Penjualan Header";
+
+            begin
+                if not GetTanggal.FindFirst() then
+                    Message('Data yang ingin di Report Kosong');
             end;
         }
     }
