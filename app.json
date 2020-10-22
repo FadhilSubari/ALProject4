@@ -1,0 +1,26 @@
+{
+  "id": "37f38b73-0808-4229-909e-1fe42a4e615a",
+  "name": "FadhilApp",
+  "publisher": "Fadhil Subari",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 59999
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://ALProject4.com/help/",
+  "showMyCode": false,
+  "runtime": "6.0"
+}
