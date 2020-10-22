@@ -43,5 +43,5 @@ page 50002 "Armada Card"
     }
 
     var
-        myInt: Integer;
+        myInt: Code[20];
 }

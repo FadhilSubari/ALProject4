@@ -27,11 +27,11 @@ page 50011 "Posted Penjualan Armada"
                     ApplicationArea = All;
                 }
             }
-            part(subForm; "Penjualan Armada Subform")
+            part(subForm; "Posted Penjualan ArmadaSub")
             {
                 SubPageLink = "No. Faktur" = field("No. Faktur");
                 UpdatePropagation = Both;
-
+                ApplicationArea = all;
             }
         }
     }
@@ -41,13 +41,19 @@ page 50011 "Posted Penjualan Armada"
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Report Custome")
             {
                 ApplicationArea = All;
-
+                Image = Print;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedCategory = Process;
                 trigger OnAction()
+                var
+                    FilterLine: Record "Posted Penjualan Header";
                 begin
-
+                    CurrPage.SetSelectionFilter(FilterLine);
+                    Report.Run(Report::"Posted Report Form", true, true, FilterLine);
                 end;
             }
         }

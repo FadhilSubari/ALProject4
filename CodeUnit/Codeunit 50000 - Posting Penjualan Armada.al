@@ -28,16 +28,17 @@ codeunit 50000 "Posting Penjualan"
             PenjualanLine.SetRange("No. Faktur", PenjualanHeaderParam."No. Faktur");
             if PenjualanLine.FindFirst() then begin
                 repeat
+                    PostedLine.Init();
                     Message(PenjualanLine.Deskripsi);
-                    // PostedLine."No. Faktur" := PenjualanLine."No. Faktur";
-                    // PostedLine."Line No." := PenjualanLine."Line No.";
-                    // PostedLine."Deskripsi" := PenjualanLine."Deskripsi";
-                    // PostedLine."Amount" := PenjualanLine."Amount";
-                    // PostedLine."Harga Satuan" := PenjualanLine."Harga Satuan";
-                    // PostedLine."Quantity" := PenjualanLine."Quantity";
-                    PostedLine.TransferFields(PenjualanLine);
+                    PostedLine."No. Faktur" := PenjualanLine."No. Faktur";
+                    PostedLine."Line No." := PenjualanLine."Line No.";
+                    PostedLine."Deskripsi" := PenjualanLine."Deskripsi";
+                    PostedLine."Amount" := PenjualanLine."Amount";
+                    PostedLine."Harga Satuan" := PenjualanLine."Harga Satuan";
+                    PostedLine."Quantity" := PenjualanLine."Quantity";
+                    // PostedLine.TransferFields(PenjualanLine);
                     PostedLine.Insert();
-                until (PostedLine.Next = 0);
+                until PenjualanLine.Next = 0;
             end;
 
         end;

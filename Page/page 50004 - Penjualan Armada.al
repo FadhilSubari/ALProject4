@@ -30,6 +30,7 @@ page 50004 "Penjualan Armada"
             {
                 SubPageLink = "No. Faktur" = field("No. Faktur");
                 UpdatePropagation = Both;
+                ApplicationArea = all;
 
             }
         }

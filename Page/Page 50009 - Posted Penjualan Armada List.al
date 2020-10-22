@@ -50,6 +50,14 @@ page 50009 "Posted Penjualan Armada List"
                     Message('Berhasil Menghapus Semua data');
                 end;
             }
+            action("Report")
+            {
+                ApplicationArea = all;
+                Image = Report;
+                Promoted = true;
+                PromotedCategory = New;
+                RunObject = report "Posted Armada List";
+            }
         }
     }
 
