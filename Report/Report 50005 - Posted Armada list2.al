@@ -1,4 +1,4 @@
-report 50005 "Posted Armada List"
+report 50004 "Posted Armada List2"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = Basic, Suit;
@@ -12,11 +12,11 @@ report 50005 "Posted Armada List"
         {
             RequestFilterFields = "No. Faktur", "Tanggal Transaksi", "Kode Armada";
             PrintOnlyIfDetail = true;
-            column(filterDateFrom; filterDateFrom)
+            column(CompanyInformasiPicture; CompanyInformasi.Picture)
             {
 
             }
-            column(PageGroupNo; PageGroupNo)
+            column(filterDateFrom; filterDateFrom)
             {
 
             }
@@ -93,12 +93,12 @@ report 50005 "Posted Armada List"
             {
                 group(GroupName)
                 {
-                    // field(New; PrintOnlyOnePerPage)
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'New Page per Customer';
-                    //     ToolTip = 'Specifies if each customer''s information is printed on a new page if you have chosen two or more customers to be included in the report.';
-                    // }
+                    field(New; PrintOnlyOnePerPage)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'New Page per Customer';
+                        ToolTip = 'Specifies if each customer''s information is printed on a new page if you have chosen two or more customers to be included in the report.';
+                    }
                     field(FilterDateFrom; FilterDateFrom)
                     {
                         ApplicationArea = all;
@@ -122,6 +122,11 @@ report 50005 "Posted Armada List"
             }
         }
     }
+    trigger OnInitReport()
+    begin
+        CompanyInformasi.get;
+        CompanyInformasi.CalcFields(Picture);
+    end;
 
     var
         myInt: Integer;
@@ -129,6 +134,7 @@ report 50005 "Posted Armada List"
         FilterDateTo: date;
         PrintOnlyOnePerpage: Boolean;
         PageGroupNo: Integer;
+        CompanyInformasi: Record "Company Information";
 
     procedure InsialRequest(setPrintOnlyOnePerpage: Boolean)
     begin
